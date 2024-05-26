@@ -1,7 +1,7 @@
 ---
 title: "Assignment 6"
 subtitle: "STAT 201"
-author: "YOUR NAME"
+author: "Darrian Mankin-Davis"
 
 format:
   html:
@@ -48,7 +48,7 @@ To get full credit for this Question you must:
 
 ## Github Repo Link
 
-[https://your-github-repo-url](https://your-github-repo-url)
+[https://your-github-repo-url](https://github.com/darrianmankin/Mankin-Davis_Darrian_201_A06.git)
 
 :::
 
