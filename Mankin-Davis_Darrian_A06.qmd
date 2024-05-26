@@ -229,6 +229,15 @@ Calculate the average temperature for each month across the whole data frame (us
 
 ```{r}
 
+mean_temps <- c()
+
+for (i in 3:ncol(max_temps)) {
+  # skipping state & year col and finding mean of all months 
+  mean_temps <- append(mean_temps, apply(max_temps[, i], 2, mean))
+}
+
+print(mean_temps)
+
 ```
 
 
@@ -243,6 +252,10 @@ Create three new data frames by slicing the data by state.
 No need to print any output here.
 
 ```{r}
+
+co_df <- max_temps[which(max_temps == "CO"), ]
+oh_df <- max_temps[which(max_temps == "OH"), ]
+va_df <- max_temps[which(max_temps == "VA"), ]
 
 ```
 
@@ -264,6 +277,23 @@ Example (this is NOT the answer just an example of what goes in the {}):
 Note: This code should still run successfully even if the numbers were to change.
 
 ```{r}
+
+# initializing vector 
+median_year <- c()
+
+for (i in 1:nrow(co_df)) {
+  
+  # collecting median per year 
+  median_val <- median(as.numeric(co_df[i, 3:12]))
+  median_year <- append(median_year, median_val)
+  
+  # min and max indexes (index will equal same for median_year & co_df)
+  max_t <- which(median_year == max(median_year))
+  min_t <- which(median_year == min(median_year))
+}
+
+# print statement 
+print(paste0('The maximum median annual temperature of ', median_year[max_t], ' occurred in ', co_df[max_t, 'year'], ' and the minimum median annual temperature of ', median_year[min_t], ' occurred in ', co_df[min_t, 'year'], '.'))
 
 ```
 
