@@ -195,6 +195,16 @@ Hint: use `MARGIN = 1:2` to apply the function to each value instead of only a r
 
 ```{r}
 
+# takes number and boils it down to a value of 1 with decimals 
+# by dividing it by 10, 100, 1000, or however big the number is 
+# rounds, then brings number back up
+
+round_to <- function(x) {
+  val <- round(x / (10^(nchar(x) - 1))) * (10^(nchar(x) - 1)) 
+}
+
+apply(mat_rand, MARGIN = 1:2, round_to)
+
 ```
 
 
