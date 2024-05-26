@@ -56,7 +56,7 @@ To get full credit for this Question you must:
 
 ## Screenshot/image of RStudio
 
-![](filepath.png)
+![](Mankin-Davis_Darrian_Screenshot_A06.png)
 
 :::
 
@@ -103,6 +103,9 @@ Extract the value `8162` (LeBron James points) in 2 different ways:
 
 ```{r}
 
+player_info[[2]][[4]]
+player_info$LJ$points
+
 ```
 
 
@@ -114,8 +117,15 @@ Print the `player_info` list to prove you were successful.
 
 ```{r}
 
-```
+height <- list(MJ = 78, LJ = 81, KB = 78, KA = 86, SO = 85)
 
+for (i in 1:length(player_info)) {
+  player_info[[i]]$height <- height[[i]]
+}
+
+print(player_info)
+
+```
 
 ### Part c (3 points)
 
@@ -133,6 +143,22 @@ Note: this must still run correctly even if the values were to change or if anot
 
 ```{r}
 
+# initializing list 
+player_points_pg <- list()
+
+for (i in 1:length(player_info)) {
+  
+  # appending points per game
+  ppg <- player_info[[i]]$points / player_info[[i]]$games_played
+  player_points_pg <- append(player_points_pg, ppg)
+}
+
+# applying names to new list  
+names(player_points_pg) <- c(names(player_info))
+
+# print 
+print(player_points_pg)
+
 ```
 
 
@@ -143,6 +169,10 @@ Use the list created in Part c and an appropriate apply function to round each v
 Store the output as a vector and print the results.
 
 ```{r}
+
+ppg_vec <- sapply(player_points_pg, round, 2)
+
+print(ppg_vec)
 
 ```
 
