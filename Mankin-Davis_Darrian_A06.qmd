@@ -288,8 +288,8 @@ for (i in 1:nrow(co_df)) {
   median_year <- append(median_year, median_val)
   
   # min and max indexes (index will equal same for median_year & co_df)
-  max_t <- which(median_year == max(median_year))
-  min_t <- which(median_year == min(median_year))
+  max_t <- which.max(median_year)
+  min_t <- which.min(median_year)
 }
 
 # print statement 
@@ -307,6 +307,19 @@ Example: The number 312 would return 6 (3 + 1 + 2)
 Run your function with 935068.
 
 ```{r}
+
+odd_num_char <- function(x) {
+  # base case; nchar == 1
+  if (nchar(x) == 1) {
+    return(x)
+  }
+  
+  # recursive case 
+  return((x %/% (10^(nchar(x) - 1)) + odd_num_char(as.numeric(substring(x, 2)))))
+  
+  }
+
+odd_num_char(935068)
 
 ```
 
